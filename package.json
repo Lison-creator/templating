@@ -1,0 +1,23 @@
+{
+  "name": "templating",
+  "version": "1.0.0",
+  "description": "Aurelien templating mardi 11/01/22",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lison-creator/templating.git"
+  },
+  "author": "Lison Ferné",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lison-creator/templating/issues"
+  },
+  "homepage": "https://github.com/Lison-creator/templating#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

@@ -7,12 +7,13 @@ let head = { "Content-Type": "text/html; charset=utf-8" }
 
 /* Passerelle avec EJS : on crée une méthode*/
 
-const renderView = (res, viewName, data) => {
+const renderView = (res, viewName, data = {}) => {
+    /* data = {}: on rend le paramètre optionnel en créant un objet vide */
 
     /* Pour retrouver les routes plus facilement, on l'automatise */
     const fileName = path.resolve(__dirname, "views", "pages", viewName + ".ejs");
 
-    ejs.renderFile(fileName, (error, contentHtml) => {
+    ejs.renderFile(fileName, data, (error, contentHtml) => {
 
         res.writeHead(200);
         res.write(contentHtml);
@@ -30,7 +31,13 @@ const renderView = (res, viewName, data) => {
 const router = {
     /* Route de base:  */
     "/": (req, res) => {
-        renderView(res, "home");
+
+        const now = new Date();
+        const optionsDate = { year: "numeric", month: "long", day: "numeric" };
+        const dataHome = {
+            dateDuJour: now.toLocaleDateString("fr-be", optionsDate)
+        };
+        renderView(res, "home", dataHome);
     },
     "/about": (req, res) => {
         renderView(res, "about");
